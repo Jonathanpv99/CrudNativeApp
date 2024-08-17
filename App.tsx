@@ -14,6 +14,7 @@ import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper
 import Inicio from './views/Inicio';
 import NuevoCliente from './views/NuevoCliente';
 import DetallesCliente from './views/DetallesCliente';
+import HeaderBar from './components/ui/HeaderBar';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,7 @@ function App(): React.JSX.Element {
  
   return (
     <NavigationContainer>
-       <StatusBar barStyle="light-content" backgroundColor="#2D4B73" />
+       <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
       <Stack.Navigator
         initialRouteName='Inicio'
         screenOptions={{
@@ -45,6 +46,12 @@ function App(): React.JSX.Element {
         <Stack.Screen
           name='Inicio'
           component={Inicio}
+          options={ ({navigation, route}) => ({
+            headerLeft: (props) => <HeaderBar {...props}
+                                      navigation={navigation}
+                                      route={route}
+                                    />
+          })}
         />
         <Stack.Screen
           name='NuevoCliente'
