@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { Button } from 'react-native-paper';
@@ -27,9 +25,5 @@ function HeaderBar({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  
-});
 
 export default HeaderBar;

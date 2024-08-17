@@ -1,21 +1,20 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
+import { Button, TextInput, Headline } from 'react-native-paper';
+import globalStyles from '../styles/global';
 
 function NuevoCliente(): React.JSX.Element {
  
   return (
-    <View>
-      <Text>Agregar Cliente</Text>
+    <View style={globalStyles.contenedor}>
+      <Headline style={globalStyles.titulo}>Añadir Nuevo Cliente</Headline>
+
+      <TextInput/>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  
-});
 
 export default NuevoCliente;
