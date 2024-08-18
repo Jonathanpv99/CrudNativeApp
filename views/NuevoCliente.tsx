@@ -3,7 +3,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Button, TextInput, Headline } from 'react-native-paper';
+import { 
+  Button, 
+  TextInput, 
+  Headline, 
+  Paragraph, 
+  Dialog, 
+  Portal,
+} from 'react-native-paper';
 import globalStyles from '../styles/global';
 
 function NuevoCliente(): React.JSX.Element {
@@ -12,6 +19,25 @@ function NuevoCliente(): React.JSX.Element {
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+
+  //almacenar cliente
+  const handleSetCliente = () => {
+    // validar datos
+    if(nombre === '' || telefono === '' || correo === '' || empresa === ''){
+      setModalVisible(true);
+    }
+    // generar cliente
+    const nuevoCliente = {
+      nombre,
+      telefono,
+      correo,
+      empresa,
+    }
+    // guardar cliente
+    // redireccionar
+    // reiniciar formulario
+  }
 
   return (
     <View style={globalStyles.contenedor}>
@@ -49,9 +75,29 @@ function NuevoCliente(): React.JSX.Element {
       <Button
         icon='pencil-circle'
         mode='contained'
+        onPress={ () => handleSetCliente() }
       >
         Guardar Cliente
       </Button>
+
+      <Portal>
+        <Dialog
+          visible={modalVisible}
+          onDismiss={ () => setModalVisible(false) }
+        >
+          <Dialog.Title>Error</Dialog.Title>
+          <Dialog.Content>
+            <Paragraph>
+              !Todos los Campos son Obligatoiors!
+            </Paragraph>
+          </Dialog.Content>
+          <Dialog.Actions>
+            <Button
+              onPress={ () => setModalVisible(false) }
+            >OK</Button>
+          </Dialog.Actions>
+        </Dialog>
+      </Portal>
     </View>
   );
 }

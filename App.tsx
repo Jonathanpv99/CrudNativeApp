@@ -28,6 +28,7 @@ function App(): React.JSX.Element {
   };
  
   return (
+    <PaperProvider theme={theme}>
     <NavigationContainer>
        <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
       <Stack.Navigator
@@ -69,6 +70,7 @@ function App(): React.JSX.Element {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </PaperProvider>
   );
 }
 
