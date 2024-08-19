@@ -55,20 +55,11 @@ function Inicio({
       />
       <FAB
         icon='plus'
-        style={styles.fab}
+        style={globalStyles.fab}
         onPress={ () => navigation.navigate('NuevoCliente')}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  fab: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 20,
-  },
-});
 
 export default Inicio;

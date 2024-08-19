@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -17,13 +17,27 @@ import urlApi from '../api/url';
 
 function NuevoCliente({
   navigation,
+  route,
 }): React.JSX.Element {
  
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+
+  //detectar si estamos editando
+  useEffect( () => {
+    if(route.params.cliente){
+      const {nombre, telefono, correo, empresa} = route.params.cliente;
+      setIsEdit(true);
+      setNombre(nombre);
+      setTelefono(telefono);
+      setCorreo(correo);
+      setEmpresa(empresa);
+    }
+  },[]);
 
   //almacenar cliente
   const handleSetCliente = async () => {
@@ -38,12 +52,23 @@ function NuevoCliente({
       correo,
       empresa,
     };
-    // guardar cliente en API
-    try {
-      await axios.post(urlApi, nuevoCliente);
-    } catch (error) {
-      console.log(error);
+    // guardar o editar cliente en API
+    if(route.params.cliente){
+      const {id} = route.params.cliente;
+      nuevoCliente.id = id;
+      try {
+        await axios.put(`${urlApi}/${id}`, nuevoCliente);
+      } catch (error) {
+        console.log(error);
+      }
+    }else{
+      try {
+        await axios.post(urlApi, nuevoCliente);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    
     // redireccionar
     navigation.navigate('Inicio');
     // reiniciar formulario
