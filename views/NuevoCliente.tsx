@@ -17,7 +17,6 @@ import urlApi from '../api/url';
 
 function NuevoCliente({
   navigation,
-  route,
 }): React.JSX.Element {
  
   const [nombre, setNombre] = useState('');
