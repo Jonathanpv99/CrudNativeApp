@@ -11,9 +11,13 @@ import {
   Dialog, 
   Portal,
 } from 'react-native-paper';
+import axios from 'axios';
 import globalStyles from '../styles/global';
 
-function NuevoCliente(): React.JSX.Element {
+function NuevoCliente({
+  navigation,
+  route,
+}): React.JSX.Element {
  
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -21,8 +25,9 @@ function NuevoCliente(): React.JSX.Element {
   const [empresa, setEmpresa] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
+  const urlApi = 'http://localhost:3000/clientes';
   //almacenar cliente
-  const handleSetCliente = () => {
+  const handleSetCliente = async () => {
     // validar datos
     if(nombre === '' || telefono === '' || correo === '' || empresa === ''){
       setModalVisible(true);
@@ -33,10 +38,20 @@ function NuevoCliente(): React.JSX.Element {
       telefono,
       correo,
       empresa,
+    };
+    // guardar cliente en API
+    try {
+      await axios.post(urlApi, nuevoCliente);
+    } catch (error) {
+      console.log(error);
     }
-    // guardar cliente
     // redireccionar
+    navigation.navigate('Inicio');
     // reiniciar formulario
+    setNombre('');
+    setTelefono('');
+    setCorreo('');
+    setEmpresa('');
   }
 
   return (

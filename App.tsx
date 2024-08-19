@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
+
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -30,7 +26,7 @@ function App(): React.JSX.Element {
   return (
     <PaperProvider theme={theme}>
     <NavigationContainer>
-       <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.primary} />
       <Stack.Navigator
         initialRouteName='Inicio'
         screenOptions={{
