@@ -8,6 +8,7 @@ import {
   List,
   Headline,
   FAB,
+  MD3LightTheme as DefaultTheme
 } from 'react-native-paper';
 import axios from 'axios';
 import urlApi from '../api/url';
@@ -47,6 +48,7 @@ function Inicio({
         keyExtractor={ (cliente) => (cliente.id).toString() }
         renderItem={ ({item}) => (
           <List.Item
+            style={styles.contenedio}
             title={item.nombre}
             description={item.empresa}
             onPress={ () => navigation.navigate('DetallesCliente', {item})}
@@ -61,5 +63,13 @@ function Inicio({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  contenedio: {
+    marginBottom: 10,
+    borderRadius: 10,
+    backgroundColor: '#bbb3ce',
+  },
+});
 
 export default Inicio;

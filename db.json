@@ -1,35 +1,3 @@
 {
-  "clientes": [
-    {
-      "id": "58fa"
-    },
-    {
-      "id": "0812",
-      "nombre": "Jonathan ",
-      "telefono": "4747282(",
-      "correo": "Jodbdndknd",
-      "empresa": "Jdjekdke"
-    },
-    {
-      "id": "ef4c",
-      "nombre": "Jonathan ",
-      "telefono": "4747282(",
-      "correo": "Jodbdndknd",
-      "empresa": "Jdjekdke"
-    },
-    {
-      "id": "9822",
-      "nombre": "Jonathan ",
-      "telefono": "4747282(",
-      "correo": "Jodbdndknd",
-      "empresa": "Jdjekdke"
-    },
-    {
-      "id": "15cf",
-      "nombre": "Jose",
-      "telefono": "4747282(",
-      "correo": "Jodbdndknd",
-      "empresa": "Jdjekdke"
-    }
-  ]
+  "clientes": []
 }

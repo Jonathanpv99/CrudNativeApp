@@ -24,14 +24,12 @@ function NuevoCliente({
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
-  const [isEdit, setIsEdit] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   //detectar si estamos editando
   useEffect( () => {
     if(route.params.cliente){
       const {nombre, telefono, correo, empresa} = route.params.cliente;
-      setIsEdit(true);
       setNombre(nombre);
       setTelefono(telefono);
       setCorreo(correo);
