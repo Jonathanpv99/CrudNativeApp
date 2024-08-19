@@ -13,6 +13,7 @@ import {
 } from 'react-native-paper';
 import axios from 'axios';
 import globalStyles from '../styles/global';
+import urlApi from '../api/url';
 
 function NuevoCliente({
   navigation,
@@ -25,7 +26,6 @@ function NuevoCliente({
   const [empresa, setEmpresa] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  const urlApi = 'http://localhost:3000/clientes';
   //almacenar cliente
   const handleSetCliente = async () => {
     // validar datos
